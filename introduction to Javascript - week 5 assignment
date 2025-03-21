@@ -1,0 +1,81 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        #myDiv {
+            background-color: lightblue;
+            padding: 20px;
+            margin: 20px;
+        }
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JavaScript DOM Manipulation</h1>
+    </header>
+
+    <main>
+        <div id="myDiv">
+            <p id="myParagraph">This is some initial text.</p>
+            <button id="changeTextButton">Change Text</button>
+            <button id="styleButton">Style Paragraph</button>
+            <button id="addElementButton">Add Element</button>
+            <button id="removeElementButton">Remove Element</button>
+        </div>
+        <ul id="myList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+        <input type="text" id="myInput" placeholder="Type something">
+        <p id="inputDisplay"></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DOM Examples</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+JavaScript
+
+// script.js
+
+// Change text content dynamically
+document.getElementById('changeTextButton').addEventListener('click', function() {
+    document.getElementById('myParagraph').textContent = 'Text has been changed!';
+});
+
+// Modify CSS styles via JavaScript
+document.getElementById('styleButton').addEventListener('click', function() {
+    document.getElementById('myParagraph').classList.toggle('highlight');
+});
+
+// Add an element when a button is clicked
+document.getElementById('addElementButton').addEventListener('click', function() {
+    const newListItem = document.createElement('li');
+    newListItem.textContent = 'New Item';
+    document.getElementById('myList').appendChild(newListItem);
+});
+
+// Remove an element when a button is clicked
+document.getElementById('removeElementButton').addEventListener('click', function() {
+    const list = document.getElementById('myList');
+    if (list.children.length > 0) {
+        list.removeChild(list.lastElementChild);
+    }
+});
+
+// Respond to user input
+document.getElementById('myInput').addEventListener('input', function() {
+    document.getElementById('inputDisplay').textContent = 'You typed: ' + this.value;
+});
